@@ -48,3 +48,10 @@ npm install husky --save-dev
 // 初始化
 npx husky install
 ```
+
+6. 配置commitlint，新建commitlint.config.js
+``` bash
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+node node_modules/husky/lib/bin add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
