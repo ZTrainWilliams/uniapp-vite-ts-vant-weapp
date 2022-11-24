@@ -1,0 +1,5 @@
+@import '../common/index.wxss';
+.van-radio-group--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+}
