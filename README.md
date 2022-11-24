@@ -32,26 +32,59 @@ uniapp-cli（vscode） vue3.0\2.0 vite vant-weapp1.x ts eslint prettierrc 打包
 }
 ```
 
-3. 配置.eslintrc.js,下载依赖,npm run lint检查
-``` bash
+3. 配置.eslintrc.js,下载依赖,npm run lint 检查
+
+```bash
 npm i eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser --save-dev
 ```
 
-4. 配置.prettierrc.js,下载依赖,npm run prettier校验
-``` bash
+4. 配置.prettierrc.js,下载依赖,npm run prettier 校验
+
+```bash
 npm i prettierrc --save-dev
 ```
 
-5. 配置husky，git校验
-``` javascript
+5. 配置 husky，git 校验
+
+```javascript
 npm install husky --save-dev
 // 初始化
 npx husky install
 ```
 
-6. 配置commitlint，新建commitlint.config.js
-``` bash
+6. 配置 commitlint，新建 commitlint.config.js
+
+```bash
 npm install --save-dev @commitlint/config-conventional @commitlint/cli
 node node_modules/husky/lib/bin add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 ```
 
+7. 配置 lint-staged，触发 eslint 校验、prettier 格式化
+
+```bash
+npm install lint-staged --save-dev
+```
+
+package.json 配置
+
+```javascript
+"scripts": {
+  "lint-staged": "lint-staged --allow-empty",
+},
+"lint-staged": {
+  "src/**/*.{vue,js,ts,json}": [
+    "prettier --write",
+    "eslint --fix",
+    "git add -A"
+  ]
+}
+```
+
+.husky 增加文件 pre-commit
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run lint-staged
+```
