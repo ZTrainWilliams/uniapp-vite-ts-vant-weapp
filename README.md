@@ -21,6 +21,9 @@ uniapp-cli（vscode） vue3.0\2.0 vite vant-weapp1.x ts eslint prettierrc 打包
 ```bash
   npx degit dcloudio/uni-preset-vue#vite-ts my-vue3-project
 ```
+[uniapp文档](https://uniapp.dcloud.net.cn/quickstart-cli.html)
+[下载包](https://gitee.com/dcloud/uni-preset-vue/repository/archive/vite-ts.zip)
+
 
 2. 使用 vant-weapp，下载 dist 文件放置 pages 统计，命名为 wxcomponents/vant
 
